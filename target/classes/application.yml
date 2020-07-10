@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/video?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+  redis:
+    lettuce:
+      shutdown-timeout: 0
+    jedis:
+      pool:
+        max-active: 1000
+        max-idle: 200
+        min-idle: 0
+        max-wait: -1
+    host: 127.0.0.1
+    port: 6379
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+    pool:
+      enabled: false
+      max-connections: 100
+  devtools:
+    restart:
+      enabled: true    #设置开启热部署
+      additional-paths: src/main/java  #重启目录
+      additional-exclude: WEB-INF/**
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+server:
+  port: 8080
